@@ -11,6 +11,6 @@ namespace Cat.MauiDemo.ViewModels
 
         private RelayCommand _clickMeCommand;
 
-        public RelayCommand clickMeConmand => _clickMeCommand ??= new RelayCommand(() => { Result = "Hello World!"; });
+        public RelayCommand ClickMeCommand => _clickMeCommand ??= new RelayCommand(() => { Result = "Hello World!"; });
     }
 }
