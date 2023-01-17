@@ -9,8 +9,10 @@
             Spacing="25"
             Padding="30,0"
             VerticalOptions="Center">
-            <Label Text="{Binding Result}"></Label>
-            <Button Command="{Binding ClickMeCommand}"></Button>
+            <Entry Text="{Binding Result}"></Entry>
+            <Button Command="{Binding ReadCommand}" Text="Read"></Button>
+            <Button Command="{Binding WriteCommand}" Text="Write"></Button>
+
         </VerticalStackLayout>
     </ScrollView>
 

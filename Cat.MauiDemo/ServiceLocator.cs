@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Cat.MauiDemo.Services;
 using Cat.MauiDemo.ViewModels;
 
 namespace Cat.MauiDemo
@@ -17,6 +18,7 @@ namespace Cat.MauiDemo
         {
             var serviceCollection = new ServiceCollection();
             serviceCollection.AddSingleton<MainPageViewModel>();
+            serviceCollection.AddSingleton<IKeyValueStorage, KeyValueStorage>();
             _serviceProvider = serviceCollection.BuildServiceProvider();
         }
     }
