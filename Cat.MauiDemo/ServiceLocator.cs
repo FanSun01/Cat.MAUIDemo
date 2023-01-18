@@ -19,6 +19,7 @@ namespace Cat.MauiDemo
             var serviceCollection = new ServiceCollection();
             serviceCollection.AddSingleton<MainPageViewModel>();
             serviceCollection.AddSingleton<IKeyValueStorage, KeyValueStorage>();
+            serviceCollection.AddSingleton<IPoetryService, PoetryService>();
             _serviceProvider = serviceCollection.BuildServiceProvider();
         }
     }
