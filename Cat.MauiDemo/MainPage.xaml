@@ -3,5 +3,34 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              BindingContext="{Binding MainPageViewModel, Source={StaticResource ServiceLocator}}"
              x:Class="Cat.MauiDemo.MainPage">
-    <Grid></Grid>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <ListView Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" ItemsSource="{Binding Poetries}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <VerticalStackLayout Padding="8">
+                            <Label Text="{Binding Title}" FontSize="18"></Label>
+                            <Label Text="{Binding Content}"></Label>
+                        </VerticalStackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <Button Grid.Column="0" Grid.Row="1" Text="Initialize" Command="{Binding InitializeCommand}"></Button>
+        <Button Grid.Column="1" Grid.Row="1" Text="Add" Command="{Binding AddCommand}"></Button>
+        <Button Grid.Column="2" Grid.Row="1" Text="ListAll" Command="{Binding ListCommand}"></Button>
+        <Label Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" Text="{Binding JsonToken}"></Label>
+        <Button Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="1" Text="LoadJson" Command="{Binding LoadJsonCommand}"></Button>
+    </Grid>
 </ContentPage>

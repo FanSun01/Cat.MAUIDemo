@@ -11,10 +11,12 @@ namespace Cat.MauiDemo.ViewModels
     public class MainPageViewModel : ObservableObject
     {
         private IPoetryService _poetryService;
+        private ITokenService _tokenService;
 
-        public MainPageViewModel(IPoetryService poetryService)
+        public MainPageViewModel(IPoetryService poetryService, ITokenService tokenService)
         {
             _poetryService = poetryService;
+            _tokenService = tokenService;
         }
 
         public ObservableCollection<Poetry> Poetries { get; } = new();
@@ -28,13 +30,14 @@ namespace Cat.MauiDemo.ViewModels
 
         private RelayCommand _addCommand;
 
-        public RelayCommand AddCommand => _addCommand ??= new RelayCommand(() =>
+        public RelayCommand AddCommand => _addCommand ??= new RelayCommand(async () =>
         {
             var p = new Poetry()
             {
                 Title = "Title",
                 Content = "Content"
             };
+            await _poetryService.AddAsync(p);
         });
 
         private RelayCommand _listCommand;
@@ -52,6 +55,22 @@ namespace Cat.MauiDemo.ViewModels
             }
         });
 
+
+        private string _jsonToken;
+
+        public string JsonToken
+        {
+            get => _jsonToken;
+            set => SetProperty(ref _jsonToken, value);
+        }
+
+        private RelayCommand _loadJsonCommand;
+
+        public RelayCommand LoadJsonCommand => _loadJsonCommand ??= new RelayCommand(async () =>
+        {
+            var res = await _tokenService.GetTokenAsync();
+            JsonToken = res;
+        });
 
     }
 }

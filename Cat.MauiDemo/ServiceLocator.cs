@@ -20,6 +20,7 @@ namespace Cat.MauiDemo
             serviceCollection.AddSingleton<MainPageViewModel>();
             serviceCollection.AddSingleton<IKeyValueStorage, KeyValueStorage>();
             serviceCollection.AddSingleton<IPoetryService, PoetryService>();
+            serviceCollection.AddSingleton<ITokenService, TokenService>();
             _serviceProvider = serviceCollection.BuildServiceProvider();
         }
     }
