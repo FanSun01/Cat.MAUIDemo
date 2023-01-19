@@ -15,8 +15,6 @@ namespace Cat.MauiDemo.Services
             var json = await response.Content.ReadAsStringAsync();
             return json;
         }
-
-
-
+        
     }
 }
